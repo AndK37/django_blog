@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}404{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'blog/css/style.css' %}">
+</head>
+<body class="container">
+    {% block content %}
+    <div>404</div>
+    {% endblock %}
+</body>
+</html>
