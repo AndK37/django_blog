@@ -5,5 +5,14 @@
 {% endblock %}
 
 {% block content %}
-{{ post.content | safe }}
+
+<div style="display: flex; flex-direction: column; gap: 10px;">
+    {% for post in posts %}
+        <div style="border: 3px solid; border-color: #EDC382;">
+            <a href="{% url 'post' post.id %}">{{post.title}}</a>
+            <p>{{post.description}}</p>
+        </div>
+    {% endfor %}
+</div>
+
 {% endblock %}
