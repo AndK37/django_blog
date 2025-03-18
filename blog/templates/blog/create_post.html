@@ -5,21 +5,22 @@
 {% endblock %}
 
 {% block content %}
-<form method="post">
+<form class="form" method="post">
     {% csrf_token %}
     <div>
-        <label for="title">Название</label>
-        <input type="text" name="title" id="title">
+        <label class="label" for="title">Название</label>
+        <input class="input" type="text" name="title" id="title">
     </div>
 
     <div>
-        <label for="desc">Описание</label>
-        <input type="text" name="desc" id="desc">
+        <label class="label" for="desc">Описание</label>
+        <input class="input" type="text" name="desc" id="desc">
     </div>
 
-    <label for="content">Содержимое</label>
-    <textarea class="content" name="content" id="content" spellcheck="false"></textarea>
+    <label class="label" for="content">Содержимое</label>
+    <textarea class="textarea" name="content" id="content" spellcheck="false"></textarea>
 
-    <button>Создать</button>
+    <button class="button">Создать</button>
 </form>
+
 {% endblock %}

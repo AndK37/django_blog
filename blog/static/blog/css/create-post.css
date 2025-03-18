@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 
-label {
+.label {
     font-size: 24px;
 }
 
-input {
+.input {
     font-size: 24px;
     background-color: #040404;
     border-color: #EDC382;
@@ -13,7 +13,7 @@ input {
     width: 100%;
 }
 
-form {
+.form {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -21,7 +21,7 @@ form {
     flex: 1;
 }
 
-textarea {
+.textarea {
     font-size: 20px;
     background-color: #040404;
     border-color: #EDC382;
@@ -34,7 +34,7 @@ textarea {
     
 }
 
-button {
+.button {
     font-size: 24px;
     background-color: #040404;
     border-color: #EDC382;

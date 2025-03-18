@@ -1,16 +1,17 @@
 {% extends 'blog/base.html' %}
 
 {% block title %}
-{{ post.title }}
+Блог
 {% endblock %}
 
 {% block content %}
 
-<div style="display: flex; flex-direction: column; gap: 10px;">
+<div class="post-container">
     {% for post in posts %}
-        <div style="border: 3px solid; border-color: #EDC382;">
-            <a href="{% url 'post' post.id %}">{{post.title}}</a>
-            <p>{{post.description}}</p>
+        <div class="post" onclick="this.querySelector('a').click()">
+            <a class="title" href="{% url 'post' post.id %}">{{post.title}}</a>
+            <p class="desc">{{post.description}}</p>
+            <span>{{post.date | date:"d.m.Y"}}</span>
         </div>
     {% endfor %}
 </div>

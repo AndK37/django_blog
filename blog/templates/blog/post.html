@@ -6,4 +6,22 @@
 
 {% block content %}
 {{ post.content | safe }}
+<div class="comment">
+    <textarea class="" name="comment-text" id=""></textarea>
+    <button>Отправить</button>
+    <div class="comments">
+        {%for comment in comments%}
+        <div style="border-left: 1px solid #EDC382;">
+            <h2 style="margin: 0;">
+                {{comment.user.login}} 
+            </h2>
+            <h4 style="margin: 0;">{{comment.date | date:"d.m.Y"}}</h4>
+            <p style="text-indent: 1rem; max-height: none; overflow: scroll; overflow-wrap: break-word;">
+                {{comment.text}}
+            </p>
+        </div>
+        {%endfor%}
+    </div>
+</div>
 {% endblock %}
+
