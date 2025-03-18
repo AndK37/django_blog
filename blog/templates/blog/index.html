@@ -14,6 +14,27 @@
             <span>{{post.date | date:"d.m.Y"}}</span>
         </div>
     {% endfor %}
+    <div style="display: flex; justify-content: space-between;">
+        <button id = "b1" class="button" style="font-size: 48px;" onclick="prevPage()"><-</button>
+        <button id = "b2" class="button" style="font-size: 48px;" onclick="nextPage()">-></button>
+    </div>
+    <script defer>
+        function nextPage() {
+            p = window.location.href.replace("http://127.0.0.1:8000/","").replace("/","")
+            if (p == "") {
+                p = 0
+            }
+            window.location.replace(`/${p - -1}`)
+        }
+        function prevPage() {
+            p = window.location.href.replace("http://127.0.0.1:8000/","").replace("/","")
+            if (p == "0" || p == "") {
+                p = 1
+            }
+            window.location.replace(`/${p - 1}`)
+        }
+
+    </script>
 </div>
 
 {% endblock %}

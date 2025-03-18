@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import date
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Post(models.Model):
@@ -8,10 +9,6 @@ class Post(models.Model):
     # image = models.ImageField()
     content = models.TextField(blank=False, null=False)
     date = models.DateField(default=date.today)
-
-class User(models.Model):
-    login = models.CharField(max_length=32, blank=False, null=False)
-    password = models.CharField(max_length=32, blank=False, null=False)
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, default=None)

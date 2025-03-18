@@ -1,7 +1,7 @@
 {% extends 'blog/base.html' %}
 
 {% block title %}
-Вход
+Регистация
 {% endblock %}
 
 {% block content %}
@@ -14,9 +14,8 @@
 
         <label class="label" for="password">Password</label>
         <input class="input" type="password" name="password" id="password">
-        <button class="button">Войти</button>
-        
-        <a href="{% url 'register' %}">Зарегистрироваться</a>
+
+        <button class="button">Зарегистрироваться</button>
     </div>
 </form>
 

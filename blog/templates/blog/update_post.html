@@ -8,18 +8,18 @@
 <form method="post">
     {% csrf_token %}
     <div>
-        <label for="title">Название</label>
-        <input type="text" name="title" id="title" value="{{post.title}}">
+        <label class="label" for="title">Название</label>
+        <input class="input" type="text" name="title" id="title" value="{{post.title}}">
     </div>
 
     <div>
-        <label for="desc">Описание</label>
-        <input type="text" name="desc" id="desc" value="{{post.description}}">
+        <label class="label" for="desc">Описание</label>
+        <input class="input" type="text" name="desc" id="desc" value="{{post.description}}">
     </div>
 
-    <label for="content">Содержимое</label>
-    <textarea class="content" name="content" id="content" spellcheck="false">{{post.content}}</textarea>
+    <label class="label" for="content">Содержимое</label>
+    <textarea class="content textarea" name="content" id="content" spellcheck="false">{{post.content}}</textarea>
 
-    <button>Изменить</button>
+    <button class="button">Изменить</button>
 </form>
 {% endblock %}

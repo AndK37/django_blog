@@ -7,16 +7,22 @@
 {% block content %}
 {{ post.content | safe }}
 <div class="comment">
-    <textarea class="" name="comment-text" id=""></textarea>
-    <button>Отправить</button>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+            <textarea style="height: 200px;" class="textarea" name="comment-text" id=""></textarea>
+            <button class="button">Отправить</button>
+        </div>
+    </form>
+
     <div class="comments">
         {%for comment in comments%}
         <div style="border-left: 1px solid #EDC382;">
             <h2 style="margin: 0;">
-                {{comment.user.login}} 
+                {{comment.user.username}} 
             </h2>
             <h4 style="margin: 0;">{{comment.date | date:"d.m.Y"}}</h4>
-            <p style="text-indent: 1rem; max-height: none; overflow: scroll; overflow-wrap: break-word;">
+            <p style="text-indent: 1rem; max-height: none; overflow: hidden; overflow-wrap: break-word; ">
                 {{comment.text}}
             </p>
         </div>
