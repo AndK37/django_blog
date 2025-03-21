@@ -14,7 +14,9 @@
 
         <label class="label" for="password">Password</label>
         <input class="input" type="password" name="password" id="password">
-
+        {%if reg_err%}
+        <span style="color:red">Логин занят</span>
+        {%endif%}
         <button class="button">Зарегистрироваться</button>
     </div>
 </form>

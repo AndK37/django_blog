@@ -3,27 +3,38 @@ from .models import *
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as dj_login, logout as dj_logout
 import datetime
+from django.db.utils import IntegrityError
 
 # Create your views here.
 def index(request, page=0):
     posts = Post.objects.all()
+    posts = posts[::-1]
     return render(request, 'blog/index.html', {'posts': posts[page * 5:(page + 1) * 5]})
 
 def login(request):
+    if request.user.is_authenticated:
+        return redirect('index')
+    
     if request.method == 'POST':
         user = authenticate(request, username=request.POST['login'], password=request.POST['password'])
         if user is not None:
             dj_login(request, user)
+        else:
+            return render(request, 'blog/login.html', {"login_err": True})
         return redirect('index')
     return render(request, 'blog/login.html', {})
 
 def register(request):
     if request.method == 'POST':
-        user = User.objects.create_user(request.POST['login'], None, request.POST['password'])
+        try:
+            user = User.objects.create_user(request.POST['login'], None, request.POST['password'])
+        except IntegrityError:
+            return render(request, 'blog/register.html', {"reg_err": True})
         user.save()
         user = authenticate(username=request.POST['login'], password=request.POST['password'])
         if user is not None:
             dj_login(request, user)
+
         return redirect('index')
     return render(request, 'blog/register.html', {})
 

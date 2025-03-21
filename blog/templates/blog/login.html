@@ -15,7 +15,9 @@
         <label class="label" for="password">Password</label>
         <input class="input" type="password" name="password" id="password">
         <button class="button">Войти</button>
-        
+        {%if login_err%}
+        <span style="color:red">Неверные данные</span>
+        {%endif%}
         <a href="{% url 'register' %}">Зарегистрироваться</a>
     </div>
 </form>
