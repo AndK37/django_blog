@@ -2,14 +2,30 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import *
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as dj_login, logout as dj_logout
-import datetime
 from django.db.utils import IntegrityError
+from django.core.paginator import Paginator
 
 # Create your views here.
-def index(request, page=0):
-    posts = Post.objects.all()
+def index(request):
+    if (('search' not in request.GET) and ('page' not in request.GET)):
+        return redirect('/?page=1')
+
+    page = 1
+    if 'page' in request.GET:
+        page = request.GET['page']
+
+    search = ''
+    if 'search' in request.GET:
+        search = request.GET['search']
+
+    posts = Post.objects.all().filter(title__icontains=search)
     posts = posts[::-1]
-    return render(request, 'blog/index.html', {'posts': posts[page * 5:(page + 1) * 5]})
+
+    paginator = Paginator(posts, 5)
+    posts = paginator.get_page(page)
+
+    return render(request, 'blog/index.html', {'posts': posts})
+
 
 def login(request):
     if request.user.is_authenticated:
