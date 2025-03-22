@@ -84,3 +84,8 @@ def update_post(request, post_id):
         return redirect('index', post_id)
     post = get_object_or_404(Post, id=post_id)
     return render(request, 'blog/update_post.html', {'post': post})
+
+def delete_post(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    post.delete()
+    return redirect('index')

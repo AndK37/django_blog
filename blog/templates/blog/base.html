@@ -21,6 +21,8 @@
             {% if post.id %}
             <button style="align-self: center;" class="button"
                 onclick="location.href = '/update/post/{{post.id}}'">Изменить</button>
+                <button style="align-self: center; color: red;" class="button"
+                onclick="location.href = '/delete/post/{{post.id}}'">Удалить</button>
             {% endif %}
             {%endif%}
 
